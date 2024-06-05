@@ -4,7 +4,7 @@ const app = express();
 const jwt = require("jsonwebtoken");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const cors = require("cors");
-const port = 5000;
+const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
@@ -30,7 +30,7 @@ function verifyToken(req, res, next) {
   next();
 }
 
-const uri = "mongodb+srv://arifahmadsiu:wSv0JB8z1SxQskTO@cluster0.l1pzthn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = process.env.DATABASE_URL;
 
 const client = new MongoClient(uri, {
   serverApi: {
